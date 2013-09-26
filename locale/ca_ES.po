@@ -1,0 +1,26 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "CSB 34-11"
+msgstr "CSB 34-11"
+
+msgctxt "view:account.payment.journal:"
+msgid "Additional data for CSB 34 type of payment file."
+msgstr "Dades addicionals pel fitxer de tipus de pagament CSB 34."
+
+msgctxt "view:account.payment.journal:"
+msgid "Additional data for promissory notes, checks, and certified payments."
+msgstr "Dades addicionals per pagarés, checs i pagaments certificats."
+
+msgctxt "view:account.payment.journal:"
+msgid "CSB 34-11 Options"
+msgstr "Opcions CSB 34-11"
+
+msgctxt "view:account.payment.journal:"
+msgid ""
+"Optional Text for the Letter (adds 101, 102, 103, data tipes in the file)"
+msgstr ""
+"Text opcional per a la carta (afegeix els tipus de dada 101, 102 i 103 al "
+"fitxer)"

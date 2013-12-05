@@ -198,48 +198,48 @@ class Group:
             return write([record])
 
         values = Group.set_default_csb34_11_payment_values(group)
-        text = set_ordering_header_record() + '\r\n'
+        text = set_ordering_header_record()
         values['record_count'] += 1
-        text += set_ordering_header_002_record() + '\r\n'
+        text += set_ordering_header_002_record()
         values['record_count'] += 1
-        text += set_ordering_header_003_record() + '\r\n'
+        text += set_ordering_header_003_record()
         values['record_count'] += 1
-        text += set_ordering_header_004_record() + '\r\n'
+        text += set_ordering_header_004_record()
         values['record_count'] += 1
-        text += set_national_header_record() + '\r\n'
+        text += set_national_header_record()
         values['record_count'] += 1
         values['detail_record_count'] += 1
         for receipt in values['receipts']:
-            text += set_detail_001_record() + '\r\n'
+            text += set_detail_001_record()
             values['record_count'] += 1
             values['detail_record_count'] += 1
-            text += set_detail_002_record() + '\r\n'
+            text += set_detail_002_record()
             values['record_count'] += 1
             values['detail_record_count'] += 1
             if receipt['street']:
-                text += set_detail_003_record() + '\r\n'
+                text += set_detail_003_record()
                 values['record_count'] += 1
                 values['detail_record_count'] += 1
             if 'street2' in receipt and receipt['street2']:
-                text += set_detail_004_record() + '\r\n'
+                text += set_detail_004_record()
                 values['record_count'] += 1
                 values['detail_record_count'] += 1
             if receipt['zip'] or receipt['city']:
-                text += set_detail_005_record() + '\r\n'
+                text += set_detail_005_record()
                 values['record_count'] += 1
                 values['detail_record_count'] += 1
             if values['csb34_type'] != 'transfer' and values['send_type'] in (
                     'mail', 'certified_mail'):
-                text += set_detail_006_record() + '\r\n'
+                text += set_detail_006_record()
                 values['record_count'] += 1
                 values['detail_record_count'] += 1
                 if values['payroll_check']:
-                    text += set_detail_007_record() + '\r\n'
+                    text += set_detail_007_record()
                     values['record_count'] += 1
                     values['detail_record_count'] += 1
             values['payment_count'] += 1
         values['detail_record_count'] += 1
-        text += set_national_footer_record() + '\r\n'
+        text += set_national_footer_record()
         values['record_count'] += 2
-        text += set_ordering_footer_record() + '\r\n'
+        text += set_ordering_footer_record()
         group.attach_file(text)

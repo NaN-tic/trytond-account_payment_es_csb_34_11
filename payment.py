@@ -3,6 +3,7 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 from trytond.pool import PoolMeta
+from trytond.pyson import Eval
 import logging
 
 try:
@@ -31,6 +32,26 @@ class Journal:
             cls.process_method.selection.extend([
                 ('csb34_11', 'CSB 34-11'),
                 ])
+
+    @classmethod
+    def view_attributes(cls):
+        attributes = super(Journal, cls).view_attributes()
+        attributes.append(
+            ('/form/group[@id="csb_34_1"]', 'states', {
+                    'invisible': Eval('process_method') != 'csb34_11',
+                    })
+                )
+        attributes.append(
+            ('/form/group[@id="csb_34_1"]/group[@id="csb_34_type"]', 'states', {
+                    'invisible': Eval('csb34_type') == 'transfer',
+                    })
+                )
+        attributes.append(
+            ('/form/group[@id="csb_34_1"]/group[@id="csb_34_type"]/group[@id="csb_34_other"]', 'states', {
+                    'invisible': Eval('send_type') == 'other',
+                    })
+                )
+        return attributes
 
 
 class Group:

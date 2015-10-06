@@ -60,7 +60,7 @@ class Group:
             record = Record(c34_11.ORDERING_HEADER_RECORD)
             record.record_code = '03'
             record.data_code = '62'
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
             record.data_number = '001'
             record.send_date = values['payment_date']
@@ -73,7 +73,7 @@ class Group:
             record = Record(c34_11.ORDERING_HEADER_002_RECORD)
             record.record_code = '03'
             record.data_code = '62'
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
             record.data_number = '002'
             record.name = values['party'].name
@@ -83,7 +83,7 @@ class Group:
             record = Record(c34_11.ORDERING_HEADER_003_RECORD)
             record.record_code = '03'
             record.data_code = '62'
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
             record.data_number = '003'
             record.address = values['street']
@@ -93,7 +93,7 @@ class Group:
             record = Record(c34_11.ORDERING_HEADER_004_RECORD)
             record.record_code = '03'
             record.data_code = '62'
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
             record.data_number = '004'
             record.zip = values['zip']
@@ -104,7 +104,7 @@ class Group:
             record = Record(c34_11.NATIONAL_HEADER_RECORD)
             record.record_code = '04'
             record.data_code = '56'
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = ''
             return write([record])
 
@@ -112,9 +112,9 @@ class Group:
             record = Record(c34_11.DETAIL_001_RECORD)
             record.record_code = '06'
             record.data_code = values['csb34_type']
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
-            record.recipient_nif = receipt['vat_number']
+            record.recipient_nif = receipt['vat_code']
             record.data_number = '010'
             record.amount = receipt['amount']
             record.account = receipt['bank_account']  # receipt['data']
@@ -127,9 +127,9 @@ class Group:
             record = Record(c34_11.DETAIL_002_RECORD)
             record.record_code = '06'
             record.data_code = values['csb34_type']
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
-            record.recipient_nif = receipt['vat_number']
+            record.recipient_nif = receipt['vat_code']
             record.data_number = '011'
             record.name = receipt['name']
             return write([record])
@@ -138,9 +138,9 @@ class Group:
             record = Record(c34_11.DETAIL_003_RECORD)
             record.record_code = '06'
             record.data_code = values['csb34_type']
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
-            record.recipient_nif = receipt['vat_number']
+            record.recipient_nif = receipt['vat_code']
             record.data_number = '012'
             record.street = receipt['street']
             return write([record])
@@ -149,9 +149,9 @@ class Group:
             record = Record(c34_11.DETAIL_004_RECORD)
             record.record_code = '06'
             record.data_code = values['csb34_type']
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
-            record.recipient_nif = receipt['vat_number']
+            record.recipient_nif = receipt['vat_code']
             record.data_number = '013'
             record.street2 = receipt['street2']
             return write([record])
@@ -160,9 +160,9 @@ class Group:
             record = Record(c34_11.DETAIL_005_RECORD)
             record.record_code = '06'
             record.data_code = values['csb34_type']
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
-            record.recipient_nif = receipt['vat_number']
+            record.recipient_nif = receipt['vat_code']
             record.data_number = '014'
             record.zip = receipt['zip']
             record.city = receipt['city']
@@ -172,9 +172,9 @@ class Group:
             record = Record(c34_11.DETAIL_006_RECORD)
             record.record_code = '06'
             record.data_code = values['csb34_type']
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
-            record.recipient_nif = receipt['vat_number']
+            record.recipient_nif = receipt['vat_code']
             record.data_number = '015'
             record.country_code = receipt['country_code']
             record.state = receipt['state']
@@ -184,18 +184,18 @@ class Group:
             record = Record(c34_11.DETAIL_007_RECORD)
             record.record_code = '06'
             record.data_code = values['csb34_type']
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
-            record.recipient_nif = receipt['vat_number']
+            record.recipient_nif = receipt['vat_code']
             record.data_number = '016'
-            record.beneficiary_nif = receipt['vat_number']
+            record.beneficiary_nif = receipt['vat_code']
             return write([record])
 
         def set_national_footer_record():
             record = Record(c34_11.NATIONAL_FOOTER_RECORD)
             record.record_code = '08'
             record.data_code = '56'
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
             record.amount = values['amount']
             record.payment_line_count = str(values['payment_count'])
@@ -206,7 +206,7 @@ class Group:
             record = Record(c34_11.ORDERING_FOOTER_RECORD)
             record.record_code = '09'
             record.data_code = '62'
-            record.nif = values['vat_number']
+            record.nif = values['vat_code']
             record.suffix = values['suffix']
             record.amount = values['amount']
             record.payment_line_count = str(values['payment_count'])
